@@ -38,7 +38,7 @@ export default function Login({
                 </div>
             )}
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="p-5" autoComplete="off">
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
@@ -72,34 +72,23 @@ export default function Login({
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="mt-4 block">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            checked={data.remember}
-                            onChange={(e) =>
-                                setData('remember', e.target.checked)
-                            }
-                        />
-                        <span className="ms-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
-                    </label>
-                </div>
+                <div className="mt-4 flex items-center justify-start py-4">
+                    {/*{canResetPassword && (*/}
+                    {/*    <Link*/}
+                    {/*        href={route('password.request')}*/}
+                    {/*        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"*/}
+                    {/*    >*/}
+                    {/*        Forgot your password?*/}
+                    {/*    </Link>*/}
+                    {/*)}*/}
 
-                <div className="mt-4 flex items-center justify-end">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <PrimaryButton className="w-full justify-center" disabled={processing}>
                         Log in
                     </PrimaryButton>
+                </div>
+
+                <div className="py-3">
+                    Don't have an account yet? <span className="underline"><a href="/register">Create Account</a></span>
                 </div>
             </form>
         </GuestLayout>
