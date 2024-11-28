@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Helpers\LogHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
@@ -26,6 +27,8 @@ class SampleJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Log::channel('backgroundJobs')->info("Executing Sample Job with params: $this->param1, $this->param2");
+        Log::channel('backgroundJobs')->info('[Completed] Job App\Jobs\SampleJob::handle - ');
+        $logMessage = LogHelper::formatLogMessage('Executing', __CLASS__, 'handle', "Executing Sample Job with params: $this->param1, $this->param2");
+        Log::channel('backgroundJobs')->info($logMessage);
     }
 }
